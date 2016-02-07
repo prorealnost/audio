@@ -1,3 +1,40 @@
 ---
+layout: default
+# <source src="https://cdn.rawgit.com/prorealnost/audio/gh-pages/public/{{ post.project }}/{{ post.slug }}.mp3">
 ---
-Hello world!
+
+<div class="posts">
+  {% for post in site.posts %}
+    {% if post.project == 'prolubov' %}
+      {% assign icon = 'heart' %}
+    {% elsif post.project == 'soedinennost' %}
+      {% assign icon = 'star' %}
+    {% elsif post.project == 'amoral' %}
+      {% assign icon = 'glass' %}
+    {% elsif post.project == 'business' %}
+      {% assign icon = 'black-tie' %}
+    {% endif %}
+
+    {% capture href %}https://raw.githubusercontent.com/prorealnost/audio/gh-pages/public/{{ post.project }}/{{ post.slug }}.mp3{% endcapture %}
+
+    <article class="post">
+      <p class="pull-left" style="margin: 5px 30px 30px 30px;">
+        <i class="media-object text-muted fa fa-{{ icon }} fa-5x"></i>
+      </p>
+
+      <div style="margin-left: 150px;">
+        <h2>
+          {{ post.title }}
+        </h2>
+
+        <audio preload="none">
+          <source src="{{ href }}">
+        </audio>
+
+        <div class="date">
+          <p>{{ post.date | date: "%B %e, %Y" }} <a href="{{ href }}"><i class="fa fa-download"></i></a></p>
+        </div>
+      </div>
+    </article>
+  {% endfor %}
+</div>
