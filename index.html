@@ -7,22 +7,27 @@ layout: default
   {% for post in site.posts %}
     {% if post.project == 'prolubov' %}
       {% assign icon = 'heart' %}
+      {% assign cat = 'Отношения' %}
     {% elsif post.project == 'soedinennost' %}
       {% assign icon = 'star' %}
+      {% assign cat = 'Личная эффективность' %}
     {% elsif post.project == 'amoral' %}
       {% assign icon = 'glass' %}
+      {% assign cat = 'Соблазнение' %}
     {% elsif post.project == 'business' %}
       {% assign icon = 'black-tie' %}
+      {% assign cat = 'Бизнес' %}
     {% endif %}
 
     {% capture href %}https://raw.githubusercontent.com/prorealnost/audio/gh-pages/public/{{ post.project }}/{{ post.slug }}.mp3{% endcapture %}
 
     <article class="post">
-      <p class="pull-left" style="margin: 5px 30px 30px 30px;">
-        <i class="media-object text-muted fa fa-{{ icon }} fa-5x"></i>
+      <p class="pull-left text-muted text-center" style="margin-top: 5px; width: 140px">
+        <i class="fa fa-{{ icon }} fa-5x"></i>
+        <br/>{{ cat }}
       </p>
 
-      <div style="margin-left: 150px;">
+      <div style="margin-left: 170px;">
         <h2>
           {{ post.title }}
         </h2>
